@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% block title %}Detalhes do Paciente{% endblock %}
+
+{% block conteudo %}
+  
+    <h2>Detalhes do Paciente:</h2>
+    <p>Nome: {{ paciente.nome }}</p>
+    <p>Idade: {{ paciente.idade }}</p>
+    <br/>
+
+    {% for atendimento in atendimentos %}
+      <p>{{ atendimento.data_atendimento }}</p>
+      <p>Temperatura: {{ atendimento.temperatura }}</p>
+      <p>Pressão: {{ atendimento.pressao }}</p>
+
+      {% if atendimento.dores == 0 %}
+        <p>Dores: Não</p>      
+      {% elif atendimento.dores == 1 %}
+        <p>Dores: Leve</p> 
+      {% else %}
+        <p>Dores: Grave</p> 
+      {% endif %}
+
+      {% if atendimento.perda_consciencia == 0 %}
+        <p>Perda de Consciência: Não</p>      
+      {% elif atendimento.perda_consciencia == 1 %}
+        <p>Perda de Consciência: Leve</p> 
+      {% else %}
+        <p>Perda de Consciência: Grave</p> 
+      {% endif %}
+
+      {% if atendimento.dificuldade_respiratoria == 0 %}
+        <p>Dificuldade Respiratória: Não</p>      
+      {% elif atendimento.dificuldade_respiratoria == 1 %}
+        <p>Dificuldade Respiratória: Leve</p> 
+      {% else %}
+        <p>Dificuldade Respiratória: Grave</p> 
+      {% endif %}
+
+      {% if not atendimento.atendido %}
+        <form action="{{ url_for('views.marcar_atendido', atendimento_id=atendimento.id) }}" method="post" style="display: inline;">
+          <button type="submit" class="btn btn-success btn-sm">Atendido</button>
+        </form>
+      {% endif %}
+      <br/>
+  {% endfor %}
+{% endblock %}

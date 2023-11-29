@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %}Triagem Médica{% endblock %}
+
+{% block conteudo %}
+<form method="POST">
+    <br/>
+    <h3 align="center">Ficha de atendimento</h3>
+    <div class="form-group">
+        <label for="CPF">CPF</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="CPF" 
+            name="CPF" 
+            placeholder="000.000.000-00"
+            >
+    </div>
+    <div class="form-group">
+        <label for="temperatura">Temperatura em C°</label>
+        <input 
+            type="number" 
+            class="form-control" 
+            id="temperatura" 
+            name="temperatura" 
+            placeholder="Digite a temperatura"
+            >
+    </div>
+    <div class="form-group">
+        <label for="pressao">Pressão</label>
+        <input 
+            type="number" 
+            class="form-control" 
+            id="pressao" 
+            name="pressao" 
+            placeholder="Digite a a pressão"
+            >
+    </div>
+
+    <label for="dores">Nível de Dor:</label> 
+    <select id="dores" name="dores">
+        <option value="0">Sem dor</option>
+        <option value="1">Leve</option>
+        <option value="2">Grave</option>
+    </select>
+    <br/>
+    <label for="perda_consciencia">Perda de Consciência:</label> 
+    <select id="perda_consciencia" name="perda_consciencia">
+        <option value="0">Não tem</option>
+        <option value="1">Leve</option>
+        <option value="2">Grave</option>
+    </select>
+    <br/>
+    <label for="dificuldade_respiratoria">Dificuldade Respiratória:</label> 
+    <select id="dificuldade_respiratoria" name="dificuldade_respiratoria">
+        <option value="0">Não tem</option>
+        <option value="1">Leve</option>
+        <option value="2">Grave</option>
+    </select>
+    <br/>
+    <br/>
+    <button 
+    type="submit"
+    class="btn btn-primary">Cadastre</button>
+    </form>
+{% endblock %}

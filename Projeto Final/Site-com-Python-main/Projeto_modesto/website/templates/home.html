@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Triagem Médica
+{% endblock %}
+
+{% block conteudo %}
+  <h2>Urgências:</h2>
+  <ul>
+    {% for paciente, atendimento in pacientes %}
+      {% if not atendimento.atendido %}
+        <li>
+          <p><a href="{{ url_for('auth.detalhes_paciente', paciente_id=paciente.id) }}">{{ paciente.nome }}</a></p>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endblock %}
